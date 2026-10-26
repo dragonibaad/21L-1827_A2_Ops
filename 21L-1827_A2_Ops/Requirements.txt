@@ -1,0 +1,9 @@
+mlflow
+dagshub
+flask
+sqlalchemy
+python-dotenv
+pillow
+numpy
+pandas
+scikit-learn
