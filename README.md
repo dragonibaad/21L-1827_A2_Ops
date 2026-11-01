@@ -1,0 +1,1 @@
+This is my MLOps's second assignment. NGL, This course has taught me more stuff than anything else in this entire degree.
