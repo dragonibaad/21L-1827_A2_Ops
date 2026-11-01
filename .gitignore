@@ -1,0 +1,4 @@
+.vscode
+mlruns/
+loss_curve.png
+mlflow.db
