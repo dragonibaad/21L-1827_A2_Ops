@@ -1,6 +1,8 @@
 mlflow
 dagshub
 flask
+dvc
+dvc-s3
 sqlalchemy
 python-dotenv
 pillow
