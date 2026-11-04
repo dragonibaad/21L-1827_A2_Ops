@@ -3,3 +3,5 @@ tuner_toy/
 tuner_visionguard/
 *.keras
 .env
+__pycache__
+serving_model/
