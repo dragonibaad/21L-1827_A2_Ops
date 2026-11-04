@@ -1,0 +1,7 @@
+run,run_id,backbone,lr,augmentation,unfrozen,best_val_loss,test_accuracy,test_precision,test_recall,test_roc_auc
+exp1-baseline,b2240ec8acd94a4bafa7c7ee7498d6ac,baseline,0.001,True,0,0.6184,0.7007,0.7229,0.7407,0.7288
+exp2-lr-1e-4,37c408e0e46744fcb2d9e1d3bb1ef772,baseline,0.0001,True,0,0.8169,0.5374,0.8095,0.2099,0.7112
+exp3-lr-1e-2,3ccd70946b014a3b90b71a7980f16b86,baseline,0.01,True,0,0.7122,0.6327,0.6452,0.7407,0.6902
+exp4-no-augmentation,5aaa24e8fa104a7b9dc07fcd221aff2a,baseline,0.001,False,0,0.6853,0.6871,0.6966,0.7654,0.7376
+exp5-mobilenet-frozen,0e35f502068a4d9483dfd2492f2bb1a0,mobilenet,0.001,True,0,0.5196,0.7551,0.7647,0.8025,0.8393
+exp6-mobilenet-finetune,f9ce985c34b64f4ab57d3bfc079a085d,mobilenet,0.001,True,30,2.1424,0.7483,0.7,0.9506,0.8492
