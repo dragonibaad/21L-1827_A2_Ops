@@ -1,9 +1,24 @@
-import dagshub                                           
+import json
+import dagshub
 import mlflow
+from mlflow.tracking import MlflowClient
 
+MODEL_NAME = "VisionGuard-classifier"
 dagshub.init(repo_owner="dragonibaad", repo_name="VisionGuard", mlflow=True)
+
+client = MlflowClient()
+champion = client.get_model_version_by_alias(MODEL_NAME, "champion")
+
 mlflow.artifacts.download_artifacts(
-    "models:/VisionGuard-classifier@champion",
-    dst_path="21L-1827_A2_Ops/serving_model",
+    f"models:/{MODEL_NAME}@champion",
+    dst_path="serving_model",
 )
-print("Exported champion to ./serving_model")
+
+with open("serving_model/model_info.json", "w") as f:
+    json.dump({
+        "model_name": MODEL_NAME,
+        "model_version": int(champion.version),
+        "run_id": champion.run_id,
+    }, f, indent=2)
+
+print("Exported", MODEL_NAME, "version", champion.version)

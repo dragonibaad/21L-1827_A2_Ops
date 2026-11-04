@@ -1,15 +1,20 @@
-from config import MODEL_DIR, THRESHOLD                  
+import json
+import os
+from config import MODEL_DIR, THRESHOLD
 import tensorflow as tf
 import mlflow.keras
 
 IMG_SIZE = 224
 CLASS_NAMES = {0: "Real", 1: "AI-Generated"}
 _model = None
+_info = None
 
 def load_model_once():
-    global _model
+    global _model, _info
     if _model is None:
         _model = mlflow.keras.load_model(MODEL_DIR)
+        with open(os.path.join(MODEL_DIR, "model_info.json")) as f:
+            _info = json.load(f)
     return _model
 
 def preprocess(image_bytes):
@@ -27,6 +32,9 @@ def predict(image_bytes):
         "label": CLASS_NAMES[label_id],
         "confidence": round(confidence, 4),
         "prob_ai": round(prob_ai, 4),
+        "threshold": THRESHOLD,
+        "model_name": _info["model_name"],
+        "model_version": _info["model_version"],
     }
 
 def model_ready():

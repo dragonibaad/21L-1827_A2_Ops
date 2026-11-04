@@ -26,3 +26,4 @@ h1 { font-size: 22px; font-weight: bold; margin: 0 0 20px; }
 .history { width: 100%; border-collapse: collapse; }
 .history th, .history td { padding: 8px; border-bottom: 1px solid #ddd; text-align: left; font-size: 14px; }
 .history th { font-weight: bold; }
+.rejected { color: #a33; }

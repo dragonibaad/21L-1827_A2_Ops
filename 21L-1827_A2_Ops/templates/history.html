@@ -3,19 +3,24 @@
 <h1>History</h1>
 <table class="history">
   <thead>
-    <tr><th>Time (UTC)</th><th>File</th><th>Status</th><th>Label</th><th>Confidence</th></tr>
+    <tr><th>When (UTC)</th><th>File</th><th>Decision</th><th>Confidence</th><th>Threshold</th><th>Model</th></tr>
   </thead>
   <tbody>
   {% for r in rows %}
     <tr>
-      <td>{{ r.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+      <td>{{ r.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
       <td>{{ r.file_name }}</td>
-      <td>{{ r.status }}</td>
-      <td>{{ r.label or '-' }}</td>
-      <td>{{ '%.1f%%' % (r.confidence * 100) if r.confidence is not none else '-' }}</td>
+      {% if r.status == 'ok' %}
+        <td>{{ r.label }}</td>
+        <td>{{ '%.1f%%' % (r.confidence * 100) }}</td>
+        <td>{{ '%.2f' % r.threshold }}</td>
+        <td>{{ r.model_name }} v{{ r.model_version }}</td>
+      {% else %}
+        <td colspan="4" class="rejected">Rejected: {{ r.status }}</td>
+      {% endif %}
     </tr>
   {% else %}
-    <tr><td colspan="5">No predictions yet.</td></tr>
+    <tr><td colspan="6">No searches yet.</td></tr>
   {% endfor %}
   </tbody>
 </table>

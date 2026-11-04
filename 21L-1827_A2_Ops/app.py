@@ -36,6 +36,10 @@ class Prediction(Base):
     status = Column(String(200))
     label = Column(String(20))
     confidence = Column(Float)
+    prob_ai = Column(Float)
+    threshold = Column(Float)
+    model_name = Column(String(80))
+    model_version = Column(Integer)
 
 Base.metadata.create_all(engine)
 load_model_once()
@@ -85,8 +89,12 @@ def predict_route():
             raise UploadError("No file was sent.")
         name, data = validate_upload(file)
         result = predict(data)
-        row = Prediction(file_name=name, status="ok",
-                         label=result["label"], confidence=result["confidence"])
+        row = Prediction(
+            file_name=name, status="ok",
+            label=result["label"], confidence=result["confidence"],
+            prob_ai=result["prob_ai"], threshold=result["threshold"],
+            model_name=result["model_name"], model_version=result["model_version"],
+        )
         db.add(row)
         db.commit()
         return redirect(url_for("result", pred_id=row.id))
