@@ -1,11 +1,9 @@
-import os
+from config import MODEL_DIR, THRESHOLD                  
 import tensorflow as tf
 import mlflow.keras
 
 IMG_SIZE = 224
 CLASS_NAMES = {0: "Real", 1: "AI-Generated"}
-MODEL_DIR = os.environ.get("VISIONGUARD_MODEL_DIR", "serving_model")
-
 _model = None
 
 def load_model_once():
@@ -23,10 +21,13 @@ def preprocess(image_bytes):
 def predict(image_bytes):
     model = load_model_once()
     prob_ai = float(model.predict(preprocess(image_bytes), verbose=0)[0][0])
-    label_id = 1 if prob_ai >= 0.5 else 0
+    label_id = 1 if prob_ai >= THRESHOLD else 0
     confidence = prob_ai if label_id == 1 else 1.0 - prob_ai
     return {
         "label": CLASS_NAMES[label_id],
         "confidence": round(confidence, 4),
         "prob_ai": round(prob_ai, 4),
     }
+
+def model_ready():
+    return _model is not None

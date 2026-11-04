@@ -8,15 +8,23 @@ from werkzeug.utils import secure_filename
 from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-from inference import load_model_once, predict
+import config
+from inference import load_model_once, predict, model_ready
 
-MAX_BYTES = 5 * 1024 * 1024
+
+MAX_BYTES = config.MAX_UPLOAD_MB * 1024 * 1024          
 ALLOWED = {"jpg": "JPEG", "jpeg": "JPEG", "png": "PNG"}
 
 app = Flask(__name__)
+
+@app.context_processor
+def inject_limits():
+    return {"max_mb": config.MAX_UPLOAD_MB}
+
+
 app.config["MAX_CONTENT_LENGTH"] = MAX_BYTES
 
-engine = create_engine("sqlite:///visionguard.db")
+engine = create_engine(config.DATABASE_URL)
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 
@@ -48,7 +56,7 @@ def validate_upload(file_storage):
     if not data:
         raise UploadError("The file is empty.")
     if len(data) > MAX_BYTES:
-        raise UploadError("The file is larger than 5 MB.")
+        raise UploadError(f"The file is larger than {config.MAX_UPLOAD_MB} MB.")
     try:
         with Image.open(io.BytesIO(data)) as img:
             img.verify()
@@ -107,11 +115,11 @@ def history():
 
 @app.route("/health")
 def health():
-    return jsonify(status="ok")
+    return jsonify(status="ok", model_loaded=model_ready())
 
 @app.errorhandler(413)
 def too_large(e):
-    return error_page("The file is larger than 5 MB.", 413)
+    return error_page(f"The file is larger than {config.MAX_UPLOAD_MB} MB.", 413)
 
 @app.errorhandler(404)
 def not_found(e):
@@ -122,4 +130,4 @@ def server_error(e):
     return error_page("Something failed on the server. Try again.", 500)
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(host=config.HOST, port=config.PORT, debug=config.DEBUG)
