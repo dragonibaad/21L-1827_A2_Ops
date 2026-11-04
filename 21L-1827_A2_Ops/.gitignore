@@ -5,3 +5,7 @@ tuner_visionguard/
 .env
 __pycache__
 serving_model/
+big.jpg
+fake.jpg
+notes.txt
+visionguard.db

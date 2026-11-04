@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>History</h1>
+<table class="history">
+  <thead>
+    <tr><th>Time (UTC)</th><th>File</th><th>Status</th><th>Label</th><th>Confidence</th></tr>
+  </thead>
+  <tbody>
+  {% for r in rows %}
+    <tr>
+      <td>{{ r.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+      <td>{{ r.file_name }}</td>
+      <td>{{ r.status }}</td>
+      <td>{{ r.label or '-' }}</td>
+      <td>{{ '%.1f%%' % (r.confidence * 100) if r.confidence is not none else '-' }}</td>
+    </tr>
+  {% else %}
+    <tr><td colspan="5">No predictions yet.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

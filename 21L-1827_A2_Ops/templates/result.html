@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Result</h1>
+<div class="card result {{ 'ai' if row.label == 'AI-Generated' else 'real' }}">
+  <p class="label">{{ row.label }}</p>
+  <p>Confidence: {{ '%.1f' % (row.confidence * 100) }}%</p>
+  <p class="muted">File: {{ row.file_name }}</p>
+</div>
+<p><a href="{{ url_for('upload_form') }}">Upload another</a></p>
+{% endblock %}
