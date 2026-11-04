@@ -2,3 +2,10 @@
 mlruns/
 loss_curve.png
 mlflow.db
+21L-1827_A2_Ops/confusion_matrix_autolog.png
+21L-1827_A2_Ops/confusion_matrix_manual.png
+21L-1827_A2_Ops/requirements.txt
+21L-1827_A2_Ops/roc_curve_autolog.png
+21L-1827_A2_Ops/roc_curve_manual.png
+.gitignore
+21L-1827_A2_Ops/split_lists.csv
