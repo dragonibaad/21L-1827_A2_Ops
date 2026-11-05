@@ -1,0 +1,15 @@
+.git
+.env
+.env.example
+__pycache__/
+*.pyc
+*.ipynb
+*.ipynb_checkpoints
+Data/
+*.csv
+*.png
+notebooks/
+visionguard.db
+big.jpg
+fake.jpg
+notes.txt
