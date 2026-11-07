@@ -1,10 +1,9 @@
-# remote_client.py: runs on localhost, sends images to the cloud model API
 import os
 
 import requests
 from flask import Flask, request, render_template_string
 
-API_URL = os.environ["REMOTE_API_URL"]              # e.g. http://<PUBLIC_IP>:5000
+API_URL = os.environ["REMOTE_API_URL"]
 
 app = Flask(__name__)
 

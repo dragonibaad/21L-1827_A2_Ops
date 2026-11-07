@@ -138,6 +138,26 @@ def api_predict():
         db.close()
 
 
+@app.route("/api/history")
+def api_history():
+    db = Session()
+    rows = db.query(Prediction).order_by(Prediction.id.desc()).limit(50).all()
+    db.close()
+    return jsonify([
+        {
+            "id": r.id,
+            "created_at": r.created_at.isoformat(),
+            "file_name": r.file_name,
+            "status": r.status,
+            "label": r.label,
+            "confidence": r.confidence,
+            "threshold": r.threshold,
+            "model_version": r.model_version,
+        }
+        for r in rows
+    ])
+
+
 @app.route("/result/<int:pred_id>")
 def result(pred_id):
     db = Session()
