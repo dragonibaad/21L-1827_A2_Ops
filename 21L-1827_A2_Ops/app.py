@@ -103,6 +103,41 @@ def predict_route():
     finally:
         db.close()
 
+@app.route("/api/predict", methods=["POST"])
+def api_predict():
+    file = request.files.get("image")
+    if file is None:
+        return jsonify(error="No file sent. Use form-data field 'image'."), 400
+    db = Session()
+    name = secure_filename(file.filename or "")[:120]
+    try:
+        name, data = validate_upload(file)
+        result = predict(data)
+        row = Prediction(
+            file_name=name, status="ok",
+            label=result["label"], confidence=result["confidence"],
+            prob_ai=result["prob_ai"], threshold=result["threshold"],
+            model_name=result["model_name"], model_version=result["model_version"],
+        )
+        db.add(row)
+        db.commit()
+        return jsonify(
+            id=row.id,
+            label=result["label"],
+            confidence=result["confidence"],
+            prob_ai=result["prob_ai"],
+            threshold=result["threshold"],
+            model_name=result["model_name"],
+            model_version=result["model_version"],
+        ), 200
+    except UploadError as e:
+        db.add(Prediction(file_name=name, status=e.message))
+        db.commit()
+        return jsonify(error=e.message), 400
+    finally:
+        db.close()
+
+
 @app.route("/result/<int:pred_id>")
 def result(pred_id):
     db = Session()
