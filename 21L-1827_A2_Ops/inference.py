@@ -1,8 +1,10 @@
 import json
 import os
-from config import MODEL_DIR, THRESHOLD
-import tensorflow as tf
+
 import mlflow.keras
+import tensorflow as tf
+
+from config import MODEL_DIR, THRESHOLD
 
 IMG_SIZE = 224
 CLASS_NAMES = {0: "Real", 1: "AI-Generated"}

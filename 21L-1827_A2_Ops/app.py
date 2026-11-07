@@ -1,16 +1,14 @@
-import html
 import io
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
-from flask import Flask, request, redirect, url_for, abort, jsonify, render_template
-from PIL import Image
-from werkzeug.utils import secure_filename
-from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime
+from flask import Flask, abort, jsonify, redirect, render_template, request, url_for
+from PIL import Image, UnidentifiedImageError
+from sqlalchemy import Column, DateTime, Float, Integer, String, create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
+from werkzeug.utils import secure_filename
 
 import config
-from inference import load_model_once, predict, model_ready
-
+from inference import load_model_once, model_ready, predict
 
 MAX_BYTES = config.MAX_UPLOAD_MB * 1024 * 1024          
 ALLOWED = {"jpg": "JPEG", "jpeg": "JPEG", "png": "PNG"}
@@ -31,7 +29,7 @@ Session = sessionmaker(bind=engine)
 class Prediction(Base):
     __tablename__ = "predictions"
     id = Column(Integer, primary_key=True)
-    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
     file_name = Column(String(120))
     status = Column(String(200))
     label = Column(String(20))
@@ -66,8 +64,8 @@ def validate_upload(file_storage):
             img.verify()
         with Image.open(io.BytesIO(data)) as img:
             actual_format = img.format
-    except Exception:
-        raise UploadError("This file looks like an image but cannot be decoded.")
+    except (UnidentifiedImageError, OSError, SyntaxError) as e:
+        raise UploadError("This file looks like an image but cannot be decoded.") from e
     if actual_format != ALLOWED[ext]:
         raise UploadError("The file contents do not match its extension.")
     return name, data

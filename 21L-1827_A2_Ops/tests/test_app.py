@@ -1,7 +1,8 @@
 import os
+
 os.environ.setdefault("VISIONGUARD_DATABASE_URL", "sqlite:///:memory:")
 
-from app import app  # noqa: E402  (import comes after the env var on purpose)
+from app import app
 
 
 def test_health_route():
