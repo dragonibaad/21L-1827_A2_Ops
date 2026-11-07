@@ -1,0 +1,54 @@
+web-1  | 2026-11-07 14:22:00.923048: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+web-1  | 2026-11-07 14:22:00.954103: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+web-1  | To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+web-1  |  * Serving Flask app 'app'
+web-1  |  * Debug mode: off
+web-1  | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+web-1  |  * Running on all addresses (0.0.0.0)
+web-1  |  * Running on http://127.0.0.1:5000
+web-1  |  * Running on http://172.18.0.3:5000
+web-1  | Press CTRL+C to quit
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:22:08] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:22:39] "GET /health HTTP/1.1" 200 -
+web-1  | 172.18.0.1 - - [07/Nov/2026 14:22:46] "GET /api/history HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:23:09] "GET /health HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:23:30] "GET /api/history HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:23:39] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:24:09] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:24:39] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:25:09] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:25:39] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:26:09] "GET /health HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:26:10] "GET / HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:26:10] "GET /static/style.css HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:26:11] "GET /favicon.ico HTTP/1.1" 404 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:26:39] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:27:09] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:27:39] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:28:09] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:28:40] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:29:10] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:29:40] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:30:10] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:30:40] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:31:10] "GET /health HTTP/1.1" 200 -
+web-1  | 172.18.0.1 - - [07/Nov/2026 14:31:18] "GET /api/history HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:31:40] "GET /health HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:32:08] "POST /api/predict HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:32:09] "POST /api/predict HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:32:09] "POST /api/predict HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:32:10] "POST /api/predict HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:32:10] "GET /health HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:32:11] "POST /api/predict HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:32:12] "POST /api/predict HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:32:12] "POST /api/predict HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:32:13] "POST /api/predict HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:32:14] "POST /api/predict HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:32:15] "POST /api/predict HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:32:40] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:33:10] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:33:40] "GET /health HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:33:47] "POST /api/predict HTTP/1.1" 200 -
+web-1  | 182.185.197.251 - - [07/Nov/2026 14:34:01] "GET /api/history HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:34:10] "GET /health HTTP/1.1" 200 -
+web-1  | 127.0.0.1 - - [07/Nov/2026 14:34:41] "GET /health HTTP/1.1" 200 -

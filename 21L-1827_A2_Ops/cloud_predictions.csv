@@ -1,0 +1,14 @@
+id,created_at,file_name,status,label,confidence,prob_ai,threshold,model_name,model_version
+1,2026-11-07 14:05:26.269357,Screenshot_From_2026-11-04_19-30-02.png,ok,AI-Generated,0.6963,0.6963,0.5,VisionGuard-classifier,1
+2,2026-11-07 14:08:36.434631,notes.txt,Unsupported file type. Upload a JPG or PNG.,,,,,,
+3,2026-11-07 14:32:08.32962,lindsay-adler-male-portrait-final-image.jpeg,ok,Real,0.8552,0.1448,0.5,VisionGuard-classifier,1
+4,2026-11-07 14:32:09.009167,49ee445617997a593ca86c6f9b.jpg,ok,Real,0.5988,0.4012,0.5,VisionGuard-classifier,1
+5,2026-11-07 14:32:09.838448,p5quSf4dZXctG9WFepXFdR-1200-80.jpg,ok,AI-Generated,0.539,0.539,0.5,VisionGuard-classifier,1
+6,2026-11-07 14:32:10.49001,WBCSD-People-and-Society_i1140.jpg,ok,Real,0.5587,0.4413,0.5,VisionGuard-classifier,1
+7,2026-11-07 14:32:11.083562,Portrait-Photographers-Yousuf-Karsh-King.jpg,ok,Real,0.5418,0.4582,0.5,VisionGuard-classifier,1
+8,2026-11-07 14:32:12.014454,not-rabbit-not-mouse.jpg,ok,AI-Generated,0.7056,0.7056,0.5,VisionGuard-classifier,1
+9,2026-11-07 14:32:12.532481,ai-portraits-celebrities-dwayne-johnson-the-rock.jpg,ok,Real,0.6973,0.3027,0.5,VisionGuard-classifier,1
+10,2026-11-07 14:32:13.247441,2022-11-10-image-12.jpg,ok,AI-Generated,0.8419,0.8419,0.5,VisionGuard-classifier,1
+11,2026-11-07 14:32:14.4305,oeuvre-art-generee-IA-MidJourney-remporte-1er-prix-Colorado-State-Fair.png,ok,AI-Generated,0.8304,0.8304,0.5,VisionGuard-classifier,1
+12,2026-11-07 14:32:15.020552,Bashenga_10-1-1000x552.jpg,ok,AI-Generated,0.8401,0.8401,0.5,VisionGuard-classifier,1
+13,2026-11-07 14:33:47.703325,pZuL574X_400x400.jpg,ok,Real,0.5867,0.4133,0.5,VisionGuard-classifier,1
