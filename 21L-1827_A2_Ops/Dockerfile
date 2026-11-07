@@ -25,7 +25,7 @@ COPY templates/ ./templates/
 COPY static/ ./static/
 COPY serving_model/ ./serving_model/
 
-# Create non-root user and SQLite database directory
+# Create non-root user and database directory
 RUN useradd --create-home --uid 1001 appuser \
     && mkdir -p /app/data \
     && chown -R appuser:appuser /app
