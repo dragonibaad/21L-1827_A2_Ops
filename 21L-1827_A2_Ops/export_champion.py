@@ -1,13 +1,14 @@
+# export_champion.py
 import json
 import os
 
-import dagshub
 import mlflow
 from mlflow.tracking import MlflowClient
 
-os.environ.setdefault("MLFLOW_TRACKING_URI", os.environ.get("MLFLOW_TRACKING_URL", ""))
 MODEL_NAME = "VisionGuard-classifier"
-dagshub.init(repo_owner="dragonibaad", repo_name="VisionGuard", mlflow=True)
+
+tracking_uri = os.environ["MLFLOW_TRACKING_URL"]
+mlflow.set_tracking_uri(tracking_uri)
 
 client = MlflowClient()
 champion = client.get_model_version_by_alias(MODEL_NAME, "champion")
