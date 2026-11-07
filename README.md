@@ -1,2 +1,2 @@
-![VisionGuard CI](https://github.com/dragonibaad/MLOps_Assignment_2/actions/workflows/visionguard-ci.yml/badge.svg)
+![VisionGuard CI](https://github.com/dragonibaad/21L-1827_A2_Ops/actions/workflows/visionguard-ci.yml/badge.svg)
 This is my MLOps's second assignment. NGL, This course has taught me more stuff than anything else in this entire degree.
