@@ -1,8 +1,10 @@
+import os
 import json
 import dagshub
 import mlflow
 from mlflow.tracking import MlflowClient
 
+os.environ.setdefault("MLFLOW_TRACKING_URI", os.environ.get("MLFLOW_TRACKING_URL", ""))
 MODEL_NAME = "VisionGuard-classifier"
 dagshub.init(repo_owner="dragonibaad", repo_name="VisionGuard", mlflow=True)
 

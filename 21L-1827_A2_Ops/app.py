@@ -42,7 +42,7 @@ class Prediction(Base):
     model_version = Column(Integer)
 
 Base.metadata.create_all(engine)
-load_model_once()
+
 
 class UploadError(Exception):
     def __init__(self, message):
@@ -138,4 +138,5 @@ def server_error(e):
     return error_page("Something failed on the server. Try again.", 500)
 
 if __name__ == "__main__":
+    load_model_once()
     app.run(host=config.HOST, port=config.PORT, debug=config.DEBUG)

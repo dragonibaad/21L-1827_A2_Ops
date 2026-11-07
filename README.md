@@ -1,1 +1,2 @@
+![VisionGuard CI](https://github.com/dragonibaad/MLOps_Assignment_2/actions/workflows/visionguard-ci.yml/badge.svg)
 This is my MLOps's second assignment. NGL, This course has taught me more stuff than anything else in this entire degree.
